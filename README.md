@@ -1,3 +1,7 @@
+**Dependancies** <br />
+Python 2.7 Linux environment
+Sample Test results available under test.out
+
 **Problem Statement:** <br />
 Implement a distributed hash table. 
 
