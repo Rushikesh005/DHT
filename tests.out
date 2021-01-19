@@ -1,0 +1,186 @@
+./src/ht_node.py --stop --port 6000
+./src/ht_node.py --stop --port 6001
+./src/ht_node.py --stop --port 6002
+./src/ht_node.py --stop --port 6003
+./src/ht_node.py --stop --port 6004
+./src/cor_node.py --stop --port 5000
+./src/ht_node.py --start --port 6000
+./src/ht_node.py --start --port 6001
+./src/ht_node.py --start --port 6002
+./src/ht_node.py --start --port 6003
+./src/ht_node.py --start --port 6004
+./src/cor_node.py --start --port 5000
+{"result":0,"ring":"[]"}
+
+{"result":0,"ring":"[2L, 182L, 245L, 250L, 318L]"}
+
+{"node":"0.0.0.0:6003","result":0}
+
+for key 6116017206 : communicate with 0.0.0.0:6003
+{"key":"6116017206","msg":"Successfully inserted","result":0}
+
+{"node":"0.0.0.0:6003","result":0}
+
+for key 6741830721 : communicate with 0.0.0.0:6003
+{"key":"6741830721","msg":"Successfully inserted","result":0}
+
+{"node":"0.0.0.0:6002","result":0}
+
+for key 4966883053 : communicate with 0.0.0.0:6002
+{"key":"4966883053","msg":"Successfully inserted","result":0}
+
+{"node":"0.0.0.0:6003","result":0}
+
+for key 4849519610 : communicate with 0.0.0.0:6003
+{"key":"4849519610","msg":"Successfully inserted","result":0}
+
+{"node":"0.0.0.0:6004","result":0}
+
+for key 0231616805 : communicate with 0.0.0.0:6004
+{"key":"0231616805","msg":"Successfully inserted","result":0}
+
+{"node":"0.0.0.0:6001","result":0}
+
+for key 2422196602 : communicate with 0.0.0.0:6001
+{"key":"2422196602","msg":"Successfully inserted","result":0}
+
+{"node":"0.0.0.0:6004","result":0}
+
+for key 9595145804 : communicate with 0.0.0.0:6004
+{"key":"9595145804","msg":"Successfully inserted","result":0}
+
+{"node":"0.0.0.0:6002","result":0}
+
+for key 7913825919 : communicate with 0.0.0.0:6002
+{"key":"7913825919","msg":"Successfully inserted","result":0}
+
+{"node":"0.0.0.0:6003","result":0}
+
+for key 7900484710 : communicate with 0.0.0.0:6003
+{"key":"7900484710","msg":"Successfully inserted","result":0}
+
+{"node":"0.0.0.0:6001","result":0}
+
+for key 4683967315 : communicate with 0.0.0.0:6001
+{"key":"4683967315","msg":"Successfully inserted","result":0}
+
+{"node":"0.0.0.0:6003","result":0}
+
+{"key":"6116017206","result":0,"value":"1212364887"}
+
+{"node":"0.0.0.0:6003","result":0}
+
+{"key":"6741830721","result":0,"value":"1405283270"}
+
+{"node":"0.0.0.0:6002","result":0}
+
+{"key":"4966883053","result":0,"value":"9113542871"}
+
+{"node":"0.0.0.0:6003","result":0}
+
+{"key":"4849519610","result":0,"value":"6299536643"}
+
+{"node":"0.0.0.0:6004","result":0}
+
+{"key":"0231616805","result":0,"value":"8666445535"}
+
+{"node":"0.0.0.0:6001","result":0}
+
+{"key":"2422196602","result":0,"value":"2011379614"}
+
+{"node":"0.0.0.0:6004","result":0}
+
+{"key":"9595145804","result":0,"value":"5033185368"}
+
+{"node":"0.0.0.0:6002","result":0}
+
+{"key":"7913825919","result":0,"value":"5970370181"}
+
+{"node":"0.0.0.0:6003","result":0}
+
+{"key":"7900484710","result":0,"value":"4439979268"}
+
+{"node":"0.0.0.0:6001","result":0}
+
+{"key":"4683967315","result":0,"value":"3757159710"}
+
+{"node":"0.0.0.0:6003","result":0}
+
+{"key":"6116017206","msg":"Successfully deleted","result":0}
+
+{"node":"0.0.0.0:6003","result":0}
+
+{"key":"6741830721","msg":"Successfully deleted","result":0}
+
+{"node":"0.0.0.0:6002","result":0}
+
+{"key":"4966883053","msg":"Successfully deleted","result":0}
+
+{"node":"0.0.0.0:6003","result":0}
+
+{"key":"4849519610","msg":"Successfully deleted","result":0}
+
+{"node":"0.0.0.0:6004","result":0}
+
+{"key":"0231616805","msg":"Successfully deleted","result":0}
+
+{"node":"0.0.0.0:6001","result":0}
+
+{"key":"2422196602","msg":"Successfully deleted","result":0}
+
+{"node":"0.0.0.0:6004","result":0}
+
+{"key":"9595145804","msg":"Successfully deleted","result":0}
+
+{"node":"0.0.0.0:6002","result":0}
+
+{"key":"7913825919","msg":"Successfully deleted","result":0}
+
+{"node":"0.0.0.0:6003","result":0}
+
+{"key":"7900484710","msg":"Successfully deleted","result":0}
+
+{"node":"0.0.0.0:6001","result":0}
+
+{"key":"4683967315","msg":"Successfully deleted","result":0}
+
+{"node":"0.0.0.0:6002","result":0}
+
+{"key":"('6116017206', '1212364887')","result":1,"value":null}
+
+{"node":"0.0.0.0:6003","result":0}
+
+{"key":"('6741830721', '1405283270')","result":1,"value":null}
+
+{"node":"0.0.0.0:6003","result":0}
+
+{"key":"('4966883053', '9113542871')","result":1,"value":null}
+
+{"node":"0.0.0.0:6003","result":0}
+
+{"key":"('4849519610', '6299536643')","result":1,"value":null}
+
+{"node":"0.0.0.0:6003","result":0}
+
+{"key":"('0231616805', '8666445535')","result":1,"value":null}
+
+{"node":"0.0.0.0:6003","result":0}
+
+{"key":"('2422196602', '2011379614')","result":1,"value":null}
+
+{"node":"0.0.0.0:6004","result":0}
+
+{"key":"('9595145804', '5033185368')","result":1,"value":null}
+
+{"node":"0.0.0.0:6001","result":0}
+
+{"key":"('7913825919', '5970370181')","result":1,"value":null}
+
+{"node":"0.0.0.0:6003","result":0}
+
+{"key":"('7900484710', '4439979268')","result":1,"value":null}
+
+{"node":"0.0.0.0:6003","result":0}
+
+{"key":"('4683967315', '3757159710')","result":1,"value":null}
+
