@@ -184,3 +184,26 @@ for key 4683967315 : communicate with 0.0.0.0:6001
 
 {"key":"('4683967315', '3757159710')","result":1,"value":null}
 
+# Test 2
+$$ curl -X POST -d@payload http://localhost:6001/put?key=abc
+{"key":"abc","msg":"Successfully inserted","result":0}
+
+$$ curl -X GET -d@payload http://localhost:6001/get?key=abc
+{"key":"abc","result":0,"value":"abcdefghijeklmnopqrstuvwxyz"}
+
+# next server in clockwise direction is 6000
+$$ curl -X GET -d@payload http://localhost:5000/getnextnode?node=0.0.0.0:6001
+{"node":"0.0.0.0:6000","result":0}
+
+# stop 6001 server
+$$ /usr/bin/python ./src/ht_node.py --stop --port 6001
+
+$$ ps -ef  | grep ht
+root     21317     1  0 17:07 ?        00:00:00 /usr/bin/python ./src/ht_node.py --start --port 6000
+root     21333     1  0 17:07 ?        00:00:00 /usr/bin/python ./src/ht_node.py --start --port 6002
+root     21350     1  0 17:07 ?        00:00:00 /usr/bin/python ./src/ht_node.py --start --port 6004
+root     24353 28176  0 17:32 pts/0    00:00:00 grep --color=auto ht
+
+# verifying whether key was replicated to next server on the ring
+$$ curl -X GET -d@payload http://localhost:6000/get?key=abc
+{"key":"abc","result":0,"value":"abcdefghijeklmnopqrstuvwxyz"}
