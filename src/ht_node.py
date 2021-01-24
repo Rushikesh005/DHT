@@ -42,6 +42,10 @@ URL_GET = "/get"
 URL_GET_PAGE = "/get/page/<int:page>"
 URL_DEL = "/del"
 
+PUT = "put"
+DEL = "del"
+
+s = requests.Session()
 
 class KeyNotFound(Exception):
     def __init__(self, arg):
@@ -159,7 +163,6 @@ class HashNodeService(Daemon):
         Daemon.start(self)
     
     def register_and_hb_with_cor(self, identity):
-        s = requests.Session()
         while (True):
             try:
                 # todo: declare this urls as constants
@@ -209,6 +212,7 @@ def put():
         data = request.stream.read()
         msg = ""
         try:
+            replicateWrite(PUT, key, data)
             msg = hashTable.insert(key, data)
         except SizeExceeded as e:
             msg = e.msg
@@ -242,11 +246,38 @@ def get(page=None):
 def remove():
     try:
         key = request.args.get(KEY_KEY)
+        replicateWrite(DEL, key)
         msg = hashTable.remove(key)
         return (jsonify({ KEY_RESULT: RESULT_SUCCESS, KEY_KEY: key, KEY_MSG: msg}), 200)
     except:
         logger.error("%s", traceback.format_exc())
 
+
+def replicateWrite(op, key, value=None):
+    def putKey(ip, port, key, value):
+        r = s.post('http://%s:%d/put?key=%s' %(ip, port, key), data = value)
+        if r.status_code != 200:
+            raise ValueError("Put failed for key %s with error %s" %( key, r.text))
+        print r.text
+    def delKey(ip, port, key):
+        r = s.delete('http://%s:%d/del?key=%s' %(ip, port, key))
+        if r.status_code != 200:
+            raise ValueError("Get failed for key %s with error %s" %(key, r.text))
+        print r.text
+    try:
+        r = s.get('http://%s:%d/getnextnode' %(COR_NODE_IP, COR_NODE_PORT))
+        if r.status_code != 200:
+            raise ValueError("request for get all nodes failed with error", r.text)
+        next_node = json.loads(r.text)["node"]
+        logger.log("replicating write to %s", next_node)
+        ip, port = next_node.split(':')[0], int(next_node.split(':')[1])
+        if op == PUT:
+            putKey(ip, port, key, value)
+        else
+            delKey(ip, port, key, value)
+    except:
+        logger.error("%s", traceback.format_exc())
+    
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description='HashNode Service', 
                                     formatter_class=argparse.ArgumentDefaultsHelpFormatter)

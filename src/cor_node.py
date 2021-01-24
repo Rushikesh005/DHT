@@ -33,7 +33,7 @@ URL_GET_ALL_NODES = "/getallnodes"
 URL_REGISTER = "/register"
 URL_HEARTBEAT = "/hb"
 URL_GETNODE = "/getnode"
-
+URL_GET_NEXT_NODE = "/getnextnode"
 
 hashRing = None
 
@@ -171,6 +171,16 @@ def get_ht_node_for_key():
 def get_all_nodes():
     try:
         return (jsonify({KEY_RESULT: RESULT_SUCCESS, KEY_RING : str(hashRing.ring) }), 200)
+    except:
+        logger.error("%s", traceback.format_exc())
+
+# find next node to given node on ring
+@app.route(URL_GET_NEXT_NODE, methods=['GET'])
+def get_next_node():
+    try:
+        node = request.args.get(KEY_NODE)
+        next_node = hashRing.findNextNodeFromRing(node)
+        return (jsonify({KEY_RESULT: RESULT_SUCCESS, KEY_NODE : next_node }), 200)
     except:
         logger.error("%s", traceback.format_exc())
 
