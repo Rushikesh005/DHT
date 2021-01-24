@@ -144,7 +144,7 @@ Response (places within ring)
 ```
 <div style="text-align:center"><img src="./images/DHT_FLOW.png" /></div>
 
-**first staget**
+**first stage**
 * Implemented a hash table with chaining.
 * Implemented consistent hashing for load distribution. 
 * Read with an iterator is available in case data is large. 
@@ -156,7 +156,7 @@ Response (places within ring)
 * Multiple virtual nodes for each server on ring should minimise skews. Yet to implement it. 
 * Added a testing script to validate consistency of data and CRUD operations. 
 
-**second staege**
+**second stage**
 * Each server(node) will replicate key:value to next server on the ring. Replication factor is kept to one by default but can be tuned. 
 * If any server goes down; co-ordinator will come to know it since heartbeat will go missing within 2 mins; It will remove it from the ring. 
 * Hence next get requests shall get re-directed to next available server on the ring which will have replicated data. 
